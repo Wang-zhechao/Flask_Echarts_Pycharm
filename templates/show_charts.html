@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js 这里使用flask的url_for-->
+    <script src="{{ url_for('static', filename='echarts.js') }}"></script>
+</head>
+<body>
+<!--    &lt;!&ndash; 为ECharts准备一个具备大小（宽高）的Dom &ndash;&gt;-->
+<!--    <div id="bar" style="width: 600px;height:400px;"></div>-->
+<!--    <div id="pie" style="width: 600px;height:400px;"></div>-->
+
+<!--    <script type="text/javascript">-->
+<!--        // 基于准备好的dom，初始化echarts实例-->
+<!--        var barChart = echarts.init(document.getElementById('bar'));-->
+<!--        var pieChart = echarts.init(document.getElementById('pie'));-->
+
+<!--        // 指定图表的配置项和数据-->
+<!--        barChart.setOption({{ bar_options | safe }});-->
+<!--        pieChart.setOption({{ pie_options | safe }});-->
+<!--    </script>-->
+    <div id="content"></div>
+	<script>
+        var con = document.getElementById('content'); //获取标签
+        chart_obj = {{ chart_options | safe }};
+        console.log(chart_obj)
+        console.log(eval("(" + chart_obj[0] + ")"))
+		for (var i=0; i<chart_obj.length; i++){
+            console.log(i)
+			var div = document.createElement("div"); //创建一个标签
+			div.id = String(i);
+			div.style.width = "600px";
+            div.style.height = "400px"
+            con.appendChild(div); //向刚获取的标签中添加创建的标签
+            var Chart = echarts.init(document.getElementById(String(i)));
+            var chart = eval("(" + chart_obj[i] + ")")
+            Chart.setOption(chart);
+		}
+	</script>
+</body>
+</html>
