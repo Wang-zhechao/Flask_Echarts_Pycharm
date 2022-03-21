@@ -1,9 +1,7 @@
 from flask import *
-from pyecharts import options as opts
-from pyecharts.charts import Bar, Pie
 
 app = Flask(__name__)
-
+app.config.from_object('configs')
 ##########################################
 
 
@@ -19,4 +17,4 @@ def show_charts():
         pass
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
