@@ -11,7 +11,7 @@
 ### Run the demo as follows
 ![](image/demo.gif)
 
-##使用flask实现在pycharm中显示echarts表格的修改更变。
+## 使用flask实现在pycharm中显示echarts表格的修改更变。
 
 如果你使用flask服务器配置运行，请确保打开“debug”选项并在debug模式下运行。
 ![](image/Snipaste_2022-03-21_10-06-39.png)
